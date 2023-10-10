@@ -1,0 +1,39 @@
+<div class="add">
+    <button routerLink="/post/addpost" class="btn btn-primary">add post</button>
+</div>
+
+
+<p>postlist works!</p>
+<!-- <div *ngFor="let item of data">
+         {{item.id}}
+</div> -->
+
+<div class="row">
+    <div class="col-md-12">
+        <!-- <p>{{post | async}}</p> -->
+        <table class=" table table-striped" *ngIf="post |async as PostData">
+<thead>
+    <tr>
+        <th>id</th>
+        <th>name</th>
+        <th>des</th>
+    </tr>
+</thead>
+<tbody>
+    <tr *ngFor="let item of PostData" >
+        
+        <td>{{item.id}}</td>
+        <td>{{item.title}}</td>
+        <td>{{item.description}}</td>
+           <td><button class=" btn btn-primary" [routerLink]="['edit', item.id]" > Update  </button></td>
+<td >
+    <button (click)="delete(item.id)" >delete</button>
+
+</td>
+    </tr>
+</tbody>
+        </table>
+    </div>
+</div>
+
+<router-outlet></router-outlet>
